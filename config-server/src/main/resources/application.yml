@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/manuelmye/Micro_Front.git
+          uri: https://github.com/maiksurco/MicroFrontent_26.git
           #username:
           #password:
           search-paths: config-data
