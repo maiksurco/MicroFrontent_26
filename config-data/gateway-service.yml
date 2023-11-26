@@ -1,0 +1,66 @@
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8089/eureka
+      defaultZone: ${EUREKA_URI:http://localhost:8089/eureka}
+  instance:
+    #hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+spring:
+  cloud:
+    gateway:
+      globalcors:
+          corsConfigurations:
+            '[/**]':
+              allowedOrigins:
+              # - "http://localhost:8080"
+              #puerto de react
+              - "http://localhost:3000"
+              #puerto de laravel
+              - "http://localhost:8000"
+              allowedHeaders: "*"
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: workers-service
+          uri: lb://workers-service
+          predicates:
+            - Path=/workers/**
+          filters:
+            - AuthFilter
+        - id: servicios-service
+          uri: lb://servicios-service
+          predicates:
+            - Path=/servicios/**
+          filters:
+            - AuthFilter
+        - id: prodcat-service
+          uri: lb://prodcat-service
+          predicates:
+            - Path=/categoria/**,/producto/**
+          filters:
+            - AuthFilter
+        - id: ventas-service
+          uri: lb://ventas-service
+          predicates:
+            - Path=/ventas/**
+          filters:
+            - AuthFilter
+        - id: socio-service
+          uri: lb://socio-service
+          predicates:
+            - Path=/socio/**
+          filters:
+            - AuthFilter
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
