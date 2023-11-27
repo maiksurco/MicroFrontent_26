@@ -43,16 +43,16 @@ public class VentasServiceImpl implements VentasService {
     public Optional<VentasEntity> listarPorId(Integer id) {
         VentasEntity ventasEntity = ventasRepository.findById(id).get();
         Socio socio = socioFeign.listById(ventasEntity.getSocioId()).getBody();
-        List<VentaDetalle> ventaDetalles = ventasEntity.getDetalles().stream().map(ventaDetalle -> {
-            Producto producto = productoFeign.listById(ventaDetalle.getProductoId()).getBody();
-            ventaDetalle.setProducto(producto);
-            Servicios servicios = serviciosFeign.listById(ventaDetalle.getServiciosId()).getBody();
-            ventaDetalle.setServicios(servicios);
-            Workers workers = workersFeign.listById(ventaDetalle.getWorkersId()).getBody();
-            ventaDetalle.setWorkers(workers);
-            return ventaDetalle;
-        }).collect(Collectors.toList());
-        ventasEntity.setDetalles(ventaDetalles);
+        //List<VentaDetalle> ventaDetalles = ventasEntity.getDetalles().stream().map(ventaDetalle -> {
+        //    Producto producto = productoFeign.listById(ventaDetalle.getProductoId()).getBody();
+        //    ventaDetalle.setProducto(producto);
+        //    Servicios servicios = serviciosFeign.listById(ventaDetalle.getServiciosId()).getBody();
+        //    ventaDetalle.setServicios(servicios);
+        //    Workers workers = workersFeign.listById(ventaDetalle.getWorkersId()).getBody();
+        //    ventaDetalle.setWorkers(workers);
+        //    return ventaDetalle;
+        //}).collect(Collectors.toList());
+        //ventasEntity.setDetalles(ventaDetalles);
         ventasEntity.setSocio(socio);
         return Optional.of(ventasEntity);
 

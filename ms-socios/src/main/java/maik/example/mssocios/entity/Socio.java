@@ -18,4 +18,5 @@ public class Socio {
     private Double dni;
     private Double numero;
     private String correo;
+    private String sexo;
 }

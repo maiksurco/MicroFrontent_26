@@ -21,10 +21,10 @@ public class VentasEntity {
     private String proDes;
     private Double total;
     private Integer socioId;
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "venta_id")
-    private List<VentaDetalle> Detalles;
+    //@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "venta_id")
+    //private List<VentaDetalle> Detalles;
     @Transient
     private Socio socio;
 }
