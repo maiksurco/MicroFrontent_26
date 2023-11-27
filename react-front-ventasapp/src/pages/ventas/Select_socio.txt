@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../config';
+import SocioProds from '../Socio/SocioProds';
 function SelectSocio({ onChange }) {
 
-  const [socios, setSocios] = useState([]);
-  const [selectedCSocioId, setSelectedSocioId] = useState('');
+  const [socio, setSocios] = useState([]);
+  const [selectedSocioId, setSelectedSocioId] = useState('');
   // token
   const token = localStorage.getItem("token");
   // end token
@@ -30,14 +31,14 @@ function SelectSocio({ onChange }) {
   const handleSeleccionarSocio = (event) => {
     const socioId = event.target.value;
     setSelectedSocioId(socioId);
-    //onChange({ id: socioId });
-    onChange(socioId);
+    //onChange(socioId);
+    onChange({ id: socioId });
   };
 
   return (
-    <select value={selectedCSocioId} onChange={handleSeleccionarSocio}>
+    <select value={selectedSocioId} onChange={handleSeleccionarSocio}>
       <option value="">Seleccionar Socio</option>
-      {socios.map((socio) => (
+      {SocioProds.map((socio) => (
         <option key={socio.id} value={socio.id}>
           {socio.nombre}
         </option>

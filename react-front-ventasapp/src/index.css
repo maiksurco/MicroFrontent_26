@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   /* --screen-size: 100%; */
   --screen-width: 100%;
@@ -15,7 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5;
+  background-color: #ffffff;
   /* otroo */
   /* width: var(--screen-size);
   height: var(--screen-size); */
@@ -27,7 +29,7 @@ body {
    /* Estilos para el modo de celular */
    width: 700px;
    height: 1024px;
-   border: 16px solid #000;
+   border: 16px solid #f31010;
    border-radius: 20px;
    /* Alineación y posicionamiento */
    position: absolute;

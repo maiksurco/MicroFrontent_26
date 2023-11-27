@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import 'black-dashboard-react/css/black-dashboard-react.min.css';
 
-import Footer from '../component/admin/Footer';
-import AppLayout from '../component/admin/AppLayout';
-
-
-const Home = () => {
+const Dashboard = () => {
   return (
-    <AppLayout>
- 
-      <div class="w-full px-6 py-6 mx-auto">
- 
     <div className="wrapper">
       {/* Sidebar */}
       <div className="sidebar">
@@ -35,13 +28,7 @@ const Home = () => {
         </footer>
       </div>
     </div>
-
-
-      </div>
-
-    </AppLayout>
-
   );
-}
+};
 
-export default Home;
+export default Dashboard;

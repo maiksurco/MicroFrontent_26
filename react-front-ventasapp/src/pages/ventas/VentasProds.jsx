@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 import Modal from "../../component/Modal";
 import AppLayout from "../../component/admin/AppLayout";
-import SelectSocio from "./Select_socio";
 const VentaProds = () => {
     // token
     const token = localStorage.getItem("token");
@@ -54,7 +53,7 @@ const VentaProds = () => {
     estado: "",
     proDes: "",
     total: "",
-    socioId:  { id: null },
+    socioId: "",
   });
 
   const getVentaProds = () => {
@@ -207,7 +206,7 @@ const VentaProds = () => {
   const eliminarVentaProd = async (id) => {
     try {
       // Realizar la solicitud DELETE para eliminar el socioaProd
-      const response = await axios.delete(`${API_URL}/venta/${id}`,{
+      const response = await axios.delete(`${API_URL}/ventas/${id}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -264,7 +263,7 @@ const VentaProds = () => {
                     fecha: event.target.value,
                   })
                 }
-                type="text"
+                type="date"
                 placeholder="fecha"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
               />
@@ -339,22 +338,26 @@ const VentaProds = () => {
                     total: event.target.value,
                   })
                 }
-                type="text"
+                type="number"
                 placeholder="total"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
               />
             </div>
-            <div className="ml-1">
-                            <label className="block">categoria</label>
-                            <SelectSocio onChange={(socioSeleccionada) =>
-                                setVentaProdEditado({
-                                    ...ventaProdEditado,
-                                    socioId: socioSeleccionada,
-                                })
-                            }
-                                selectedCategoriaId={ventaProdEditado.socio.id}
-                            />
-                        </div>
+            <div className="ml-1 w-full">
+              <label className="block">Socio ID</label>
+              <input
+                value={ventaProdEditado.socioId}
+                onChange={(event) =>
+                  setVentaProdEditado({
+                    ...ventaProdEditado,
+                    socioId: event.target.value,
+                  })
+                }
+                type="text"
+                placeholder="socioId"
+                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
 
             </div>
           <div className="mt-4">
